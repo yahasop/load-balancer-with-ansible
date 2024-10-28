@@ -1,11 +1,12 @@
 ##HOSTS
+#Replace placeholders MANAGED_NODE_IP_ADDRESS and MANAGED_NODE_USER for actual values
 
 [webservers]
-app1 ansible_host=35.90.101.153 ansible_ssh_user=cloud_user #Worker1
-app2 ansible_host=54.184.222.193 ansible_ssh_user=cloud_user #Worker2
+app1 ansible_host=MANAGED_NODE_IP_ADDRESS ansible_ssh_user=MANAGED_NODE_USER #Worker1
+app2 ansible_host=MANAGED_NODE_IP_ADDRESS ansible_ssh_user=MANAGED_NODE_USER #Worker2
 
 [loadbalancers]
-lb1 ansible_host=54.191.182.45 ansible_ssh_user=cloud_user #Worker3
+lb1 ansible_host=MANAGED_NODE_IP_ADDRESS ansible_ssh_user=MANAGED_NODE_USER #Worker3
 
 [local]
 control ansible_connection=local
