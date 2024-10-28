@@ -37,7 +37,7 @@ ansible-playbook 1-setup-app.yml
 ```
 * The second is the the setup load balancer file.
 ```
-ansible-playbook main.yml
+ansible-playbook 2-setup-lb.yml
 ```
 
 ## Accessing the Load Balancer
