@@ -1,0 +1,13 @@
+#This is not recommended... To avoid providing the become password everytime a playbook is executed,
+#the host user, the one who will be doing the tasks, needs to be added to the sudoers file in order
+#to run commands as sudo without being asked for a password (using -K flag when running ansible-playbook command).
+---
+- hosts: webservers:loadbalancers
+  become: yes #Become to run the tasks as sudo. Editing the sudoers file needs the permission.
+  tasks:
+    - name: add user to sudoers
+      lineinfile: #Module to write/append line into a file
+        path: /etc/sudoers #Path of sudoers file
+        line: 'cloud_user ALL=(ALL) NOPASSWD: ALL' #Line to be added. Replace MANAGED_NODE_USER for the actual user of the node
+        state: present #This makes sure the file exists
+        validate: "visudo -cf %s" #Validate changes before saving. The sudoers file is critical.

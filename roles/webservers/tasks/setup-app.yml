@@ -1,0 +1,17 @@
+- name: Upload application file
+  copy:
+    src: index.php
+    dest: "{{ app_dir }}" #The var needs to be defined whitin brackets and quotes
+    mode: 0755
+  notify: restart apache
+
+- name: Remove index.html
+  file:
+    path: "{{ app_dir }}/index.html"
+    state: absent
+      
+- name: Create simple info page
+  copy:
+    dest: "{{ app_dir }}/info.php"
+    content: "<h1> Info about our webserver: {{ ansible_hostname }} </h1>" 
+    #The ansible_hostname variable aboce is not defined here but is a variable populated at the Gathering Facts task

@@ -1,0 +1,12 @@
+- name: Creating template
+  template:
+    src: lb-config.j2 #This is the LB configuration
+    dest: /etc/apache2/sites-enabled/lb.conf #Renames the lb-config.j2 file to lb.conf
+    owner: root #To ensure the file runs correctly
+    group: www-data #Or root group
+    mode: 0644
+  notify: restart apache #This notifies the handler if any change is done into the lb.conf file
+
+- name: Enable proxy
+  #This are apache load balancing modules necessary to enable the service
+  shell: sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests 

@@ -1,0 +1,8 @@
+- name: restart apache
+  service: name=apache2 state=restarted
+
+# Handlers are tasks that only run when they're notified (when changes are made)
+# If we dont have a handler enable, then everytime we run the playbooy, will restart the apache service.
+# This is not stricly needed every time
+# A notify attribute will send a message to a handler every time a change is done.
+# If theres no changes, in this case for example, the apache service wont restart

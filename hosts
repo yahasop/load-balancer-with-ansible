@@ -1,0 +1,11 @@
+##HOSTS
+
+[webservers]
+app1 ansible_host=35.90.101.153 ansible_ssh_user=cloud_user #Worker1
+app2 ansible_host=54.184.222.193 ansible_ssh_user=cloud_user #Worker2
+
+[loadbalancers]
+lb1 ansible_host=54.191.182.45 ansible_ssh_user=cloud_user #Worker3
+
+[local]
+control ansible_connection=local

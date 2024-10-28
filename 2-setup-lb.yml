@@ -1,0 +1,9 @@
+---
+- hosts: loadbalancers
+  become: true
+  tasks:
+    - name: update firewall
+      shell: ufw allow 80
+
+  roles:
+    - loadbalancers

@@ -1,0 +1,5 @@
+- name: install services
+  import_tasks: install-services.yml
+
+- name: setup load balancer
+  import_tasks: setup-lb.yml
